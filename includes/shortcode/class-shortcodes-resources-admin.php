@@ -20,12 +20,15 @@
          * @since 1.0.0
          */
         protected $run;
-    
-        private   $prefix = "scrptz_tdl_";
-    
-        private $exclude_taxonomy = array(
-            "nav_menu", "link_category", "post_format"
-        );
+        
+        private $prefix = "scrptz_tdl_";
+        
+        private $exclude_taxonomy
+            = array(
+                "nav_menu",
+                "link_category",
+                "post_format"
+            );
         
         /**
          * Constructor
@@ -43,8 +46,7 @@
                 SCRPTZ_TDL_Functionality::VERSION,
                 $this->run->atts_defaults
             );
-    
-            add_action('cmb2_render_text_number', array($this, 'meta_addtnl_type_text_number'), 10, 5);
+            
         }
         
         /**
@@ -81,52 +83,24 @@
                 'show_option_none' => false,
                 'default'          => '',
                 'options'          => $this->get_taxonomies(),
-                
-            );
             
-            $fields[] = array(
-                'name'    => __('Term Limit', 'scrptz-tdl'),
-                'desc'    => __('Limit child terms listings', 'scrptz-tdl'),
-                'id'      => 'limit_child_term',
-                'type'    => 'text_number',
-                'default' => 20
-            );
-            
-            $fields[] = array(
-                'name'    => __('Post Limit', 'scrptz-tdl'),
-                'desc'    => __('Limit child posts listings', 'scrptz-tdl'),
-                'id'      => 'limit_child_post',
-                'type'    => 'text_number',
-                'default' => 20,
             );
             
             return $fields;
         }
-    
-        /**
-         * input type number for meta fields
-         *
-         * @param $field
-         * @param $escaped_value
-         * @param $object_id
-         * @param $object_type
-         * @param $field_type_object
-         */
-        function meta_addtnl_type_text_number($field, $escaped_value, $object_id, $object_type, $field_type_object)
-        {
-            echo $field_type_object->input(array('type' => 'number', 'min' => 0));
-        }
         
-        public function get_taxonomies() {
+        public function get_taxonomies()
+        {
             $taxonomies = get_taxonomies();
             $hRarchy_taxnmy_list = array();
             foreach ($taxonomies as $index => $taxonomy) {
-                if(!in_array($taxonomy, $this->exclude_taxonomy)) {
-                    if(is_taxonomy_hierarchical($taxonomy)) {
+                if (!in_array($taxonomy, $this->exclude_taxonomy)) {
+                    if (is_taxonomy_hierarchical($taxonomy)) {
                         $hRarchy_taxnmy_list[$taxonomy] = $taxonomy;
                     }
                 }
             }
+            
             return $hRarchy_taxnmy_list;
         }
         

@@ -50,5 +50,3 @@ fabric.properties
 *.iml
 out
 gen
-
-/vendor/

@@ -30,8 +30,6 @@
          */
         public $atts_defaults = array(
             'select_taxonomy'  => 'category', // taxonomy identifier
-            'limit_child_term' => 20, // child term limit
-            'limit_child_post' => 20, // child post limit
         );
         
         protected $plugin = null;
@@ -56,14 +54,11 @@
         protected function _shortcode()
         {
             $taxonomy = $this->att('select_taxonomy');
-            $limit_child_term = $this->att('limit_child_term');
-            $limit_child_post = $this->att('limit_child_post');
     
             $args['terms'] = get_terms(array(
                 'taxonomy' => $taxonomy,
                 'hide_empty' => true,
                 'parent'   => 0,
-                'number'   => $limit_child_term,
             ));
             
             return Template_View_Loader::get_template('template-top-level', $args);

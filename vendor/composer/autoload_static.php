@@ -7,8 +7,6 @@ namespace Composer\Autoload;
 class ComposerStaticInit11a34f05c4d7e2608496dcf6679ab519
 {
     public static $files = array (
-        'a5f882d89ab791a139cd2d37e50cdd80' => __DIR__ . '/..' . '/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php',
-        '4cfe55868654b2ea9298a46af9d2b853' => __DIR__ . '/..' . '/webdevstudios/wds-shortcodes/vendor/jtsternberg/shortcode-button/shortcode-button.php',
         '35d1e42abf4d8c181ae544a92d8f3f6a' => __DIR__ . '/..' . '/kint-php/kint/Kint.class.php',
         'c5994afef298788638bd9456be9b50d9' => __DIR__ . '/../..' . '/includes/functions/core.php',
     );
@@ -20,21 +18,8 @@ class ComposerStaticInit11a34f05c4d7e2608496dcf6679ab519
         'SCRPTZ_TDL_Shortcodes_Resources_Admin' => __DIR__ . '/../..' . '/includes/shortcode/class-shortcodes-resources-admin.php',
         'SCRPTZ_TDL_Shortcodes_Resources_Run' => __DIR__ . '/../..' . '/includes/shortcode/class-shortcodes-resources-run.php',
         'SCRPTZ_TDL_plugin_option' => __DIR__ . '/../..' . '/includes/classes/class-plugin-option.php',
-        'Shortcode_Button_106' => __DIR__ . '/..' . '/jtsternberg/shortcode-button/shortcode-button.php',
-        'TGMPA_Bulk_Installer' => __DIR__ . '/..' . '/webdevstudios/wds-shortcodes/vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php',
-        'TGMPA_Bulk_Installer_Skin' => __DIR__ . '/..' . '/webdevstudios/wds-shortcodes/vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php',
-        'TGMPA_List_Table' => __DIR__ . '/..' . '/webdevstudios/wds-shortcodes/vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php',
-        'TGMPA_Utils' => __DIR__ . '/..' . '/webdevstudios/wds-shortcodes/vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php',
-        'TGM_Bulk_Installer' => __DIR__ . '/..' . '/webdevstudios/wds-shortcodes/vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php',
-        'TGM_Bulk_Installer_Skin' => __DIR__ . '/..' . '/webdevstudios/wds-shortcodes/vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php',
-        'TGM_Plugin_Activation' => __DIR__ . '/..' . '/webdevstudios/wds-shortcodes/vendor/tgmpa/tgm-plugin-activation/class-tgm-plugin-activation.php',
         'Template_Loader' => __DIR__ . '/../..' . '/includes/templates/class-template-loader.php',
         'Template_View_Loader' => __DIR__ . '/../..' . '/includes/templates/class-template-view-loader.php',
-        'WDS_Shortcode' => __DIR__ . '/..' . '/webdevstudios/wds-shortcodes/includes/shortcode.php',
-        'WDS_Shortcode_Admin' => __DIR__ . '/..' . '/webdevstudios/wds-shortcodes/includes/shortcode-admin.php',
-        'WDS_Shortcode_Instances' => __DIR__ . '/..' . '/webdevstudios/wds-shortcodes/includes/shortcode-instances.php',
-        'WDS_Shortcodes' => __DIR__ . '/..' . '/webdevstudios/wds-shortcodes/includes/shortcodes.php',
-        'WDS_Shortcodes_Base' => __DIR__ . '/..' . '/webdevstudios/wds-shortcodes/includes/init.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

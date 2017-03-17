@@ -10,8 +10,7 @@
     }
   ],
   "require": {
-    "php": ">=5.4",
-    "webdevstudios/wds-shortcodes": "^v1.0.4"
+    "php": ">=5.4"
   },
   "require-dev": {
     "kint-php/kint": "^1.0"

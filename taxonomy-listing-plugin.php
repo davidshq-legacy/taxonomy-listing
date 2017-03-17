@@ -246,9 +246,9 @@
         {
             $this->add_dev_classes();
             
+            $this->plugin_option = scrptz_tdl_plugin_option();
             $this->shortcode = new SCRPTZ_TDL_Shortcodes($this);
             $this->template_load = new Template_Loader($this);
-            //            p($this->template_load);
             
             // Only create the full metabox object if in the admin.
             if (is_admin()) {

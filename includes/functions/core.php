@@ -33,3 +33,39 @@
             load_template( $template, false );
         }
     }
+    
+    /**
+     * Helper function to get/return the SCRPTZ_TDL_plugin_option object
+     * @since  0.1.0
+     * @return SCRPTZ_TDL_plugin_option object
+     */
+    function scrptz_tdl_plugin_option() {
+        return SCRPTZ_TDL_plugin_option::get_instance();
+    }
+    
+    /**
+     * Wrapper function around cmb2_get_option
+     * @since  0.1.0
+     * @param  string $key     Options array key
+     * @param  mixed  $default Optional default value
+     * @return mixed           Option value
+     */
+    function scprtz_tdl_get_option( $key = '', $default = null ) {
+        if ( function_exists( 'cmb2_get_option' ) ) {
+            // Use cmb2_get_option as it passes through some key filters.
+            return cmb2_get_option( SCRPTZ_TDL_plugin_option()->key, $key, $default );
+        }
+        
+        // Fallback to get_option if CMB2 is not loaded yet.
+        $opts = get_option( SCRPTZ_TDL_plugin_option()->key, $key, $default );
+        
+        $val = $default;
+        
+        if ( 'all' == $key ) {
+            $val = $opts;
+        } elseif ( array_key_exists( $key, $opts ) && false !== $opts[ $key ] ) {
+            $val = $opts[ $key ];
+        }
+        
+        return $val;
+    }

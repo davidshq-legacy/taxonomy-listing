@@ -64,4 +64,5 @@
                 echo Template_View_Loader::get_template('template-parts/posts/list-item', $data);
             }
         }
+        
     }

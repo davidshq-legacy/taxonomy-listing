@@ -7,6 +7,16 @@
         echo "<li class='scrptz-top-terms'>" .
              "<a href='" . get_term_link($term) . "'>$term->name</a>" .
              "</li>";
+        
+        if ("on" == $this->get("show_description")) {
+            ?>
+            <small>
+                <?php
+                    echo ' - ' . $term->description;
+                ?>
+            </small>
+            <?php
+        }
     }
     echo "</ul>";
     

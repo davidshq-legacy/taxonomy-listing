@@ -53,11 +53,11 @@
     function scprtz_tdl_get_option( $key = '', $default = null ) {
         if ( function_exists( 'cmb2_get_option' ) ) {
             // Use cmb2_get_option as it passes through some key filters.
-            return cmb2_get_option( SCRPTZ_TDL_plugin_option()->key, $key, $default );
+            return cmb2_get_option( scrptz_tdl_plugin_option()->key, $key, $default );
         }
         
         // Fallback to get_option if CMB2 is not loaded yet.
-        $opts = get_option( SCRPTZ_TDL_plugin_option()->key, $key, $default );
+        $opts = get_option( scrptz_tdl_plugin_option()->key, $key, $default );
         
         $val = $default;
         
@@ -68,4 +68,22 @@
         }
         
         return $val;
+    }
+    
+    function scprtz_tdl_get_excerpt_by_id($post_id){
+        $the_post = get_post($post_id); //Gets post ID
+        $the_excerpt = $the_post->post_content; //Gets post_content to be used as a basis for the excerpt
+        $excerpt_length = 35; //Sets excerpt length by word count
+        $the_excerpt = strip_tags(strip_shortcodes($the_excerpt)); //Strips tags and images
+        $words = explode(' ', $the_excerpt, $excerpt_length + 1);
+        
+        if(count($words) > $excerpt_length) :
+            array_pop($words);
+            array_push($words, '…');
+            $the_excerpt = implode(' ', $words);
+        endif;
+        
+        $the_excerpt = $the_excerpt;
+        
+        return $the_excerpt;
     }

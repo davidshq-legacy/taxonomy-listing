@@ -9,13 +9,15 @@
              "</li>";
         
         if ("on" == $this->get("show_description")) {
-            ?>
-            <small>
-                <?php
-                    echo ' - ' . $term->description;
+            if (!empty($term->description)) {
                 ?>
-            </small>
-            <?php
+                <small>
+                    <?php
+                        echo ' - ' . $term->description;
+                    ?>
+                </small>
+                <?php
+            }
         }
     }
     echo "</ul>";

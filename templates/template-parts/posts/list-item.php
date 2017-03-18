@@ -36,14 +36,12 @@
             <?php
         }
         
-        if ("on" == $this->get("show_description")) {
-            ?>
-            <small>
-                <?php
-                    echo ' - ' . $this->get('term')->description;
-                ?>
-            </small>
-            <?php
+        foreach ($show_post_meta_fields as $index => $item) {
+            
+            if (!empty($item)) {
+                echo '<br/><small>' . ' - ' . $item . '</small>';
+            }
         }
+    
     ?>
 </li>

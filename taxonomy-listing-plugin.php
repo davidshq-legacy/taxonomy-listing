@@ -232,8 +232,11 @@
         {
             // Do checks for required classes / functions
             // function_exists('') & class_exists('').
-            // We have met all requirements.
-            return true;
+            if (defined('WDS_SHORTCODES_LOADED') && defined('CMB2_LOADED')) {
+                return true;
+            } else {
+                return false;
+            }
         }
         
         /**
@@ -331,7 +334,9 @@
             // Output our error.
             echo '<div id="message" class="error">';
             echo '<p>' .
-                 sprintf(__('Taxonomy Directory Listing is missing some required files and has been <a href="%s">deactivated</a>. Please make sure all requirements are available.',
+                 sprintf(__('Taxonomy Directory Listing has been <a href="%s">deactivated</a>. ' .
+                            'It requires CMB2 and WDS_Shortcode plugins, ' .
+                            'please make sure that these plugins are installed.',
                      'scrptz-tdl'), admin_url('plugins.php')) . '</p>';
             echo '</div>';
         }

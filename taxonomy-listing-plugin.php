@@ -4,7 +4,7 @@
      * Plugin Name: Taxonomy Directory Listing
      * Plugin URI:  http://www.scripterz.in/
      * Description: Taxonomy Directory Listing
-     * Version:     1.0.0
+     * Version:     1.0.3
      * Author:      Suraj Gupta
      * Author URI:  https://twitter.com/surajprgupta
      * Donate link: https://www.paypal.me/surajprgupta
@@ -37,7 +37,7 @@
          * @var  string
          * @since  1.0.0
          */
-        const VERSION = '1.0.0';
+        const VERSION = '1.0.3';
         
         /**
          * Path of plugin directory
@@ -194,8 +194,6 @@
                 $this->plugin_classes();
                 $this->enqueue_script();
                 $this->enqueue_style();
-                
-                add_action('admin_menu', array($this, 'add_admin_menu_page'));
             }
         }
         
@@ -269,47 +267,41 @@
             }
             include __DIR__ . '/dev/Logging_Mods.php';
         }
-        
-        protected function enqueue_script()
-        {
-            //            $admin_page = rgget('page');
-            //            $min = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
-            //
-            //            wp_enqueue_script(
-            //                'ccb-gravity-admin',
-            //                CCB_GRAVITY_Functionality::url("assets/js/ccb-gravity-admin{$min}.js"),
-            //                array('jquery'),
-            //                CCB_GRAVITY_Functionality::VERSION
-            //            );
-        }
-        
-        protected function enqueue_style()
-        {
-            //            $admin_page = rgget('page');
-            //            $min = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
-            //
-            //            wp_enqueue_style(
-            //                'ccb-gravity-admin-css',
-            //                CCB_GRAVITY_Functionality::url("assets/css/ccb-gravity-admin{$min}.css"),
-            //                array(),
-            //                CCB_GRAVITY_Functionality::VERSION
-            //            );
-        }
-        
+    
         /**
-         * admin menu pages for the plugin
+         * enqueue js from plugin
          *
-         * @since  1.0.0
+         * @since  1.0.3
          * @return void
          */
-        public function add_admin_menu_page()
+        protected function enqueue_script()
         {
-            //            add_menu_page('CCB GRAVITY', __('CCB GRAVITY', 'ccb-gravity'), 'manage_options', 'ccb-gravity', array($this, 'plugin_index_page'));
+            $min = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
+            
+            wp_enqueue_script(
+                'scrptz-tdl-admin-js',
+                SCRPTZ_TDL_Functionality::url("templates/js/main{$min}.js"),
+                array('jquery'),
+                SCRPTZ_TDL_Functionality::VERSION
+            );
         }
-        
-        public function plugin_index_page()
+    
+        /**
+         * enqueue css from plugin
+         *
+         * @since  1.0.3
+         * @return void
+         */
+        protected function enqueue_style()
         {
-            //            echo 'page_ccb_gravity_index';
+            $min = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
+            
+            wp_enqueue_style(
+                'scrptz-tdl-admin-css',
+                SCRPTZ_TDL_Functionality::url("templates/css/main{$min}.css"),
+                array(),
+                SCRPTZ_TDL_Functionality::VERSION
+            );
         }
         
         /**

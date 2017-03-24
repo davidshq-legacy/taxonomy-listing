@@ -60,8 +60,8 @@
                 'hide_empty' => true,
                 'parent'   => 0,
             ));
+            $args['taxonomy'] = $taxonomy;
             $args['show_description'] = scprtz_tdl_get_option('term_description', "off");
-            
             return Template_View_Loader::get_template('template-top-level', $args);
         }
         

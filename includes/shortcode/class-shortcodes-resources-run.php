@@ -31,7 +31,7 @@
         public $atts_defaults = array(
             'select_taxonomy'  => 'category', // taxonomy identifier
             'term_description'  => false,
-            'post_data'  => '',
+            'post_data'  => [],
             'post_meta_fields'  => '',
         );
         
@@ -68,8 +68,13 @@
                 'hide_empty' => true,
                 'parent'   => 0,
             ));
+            
             $args['taxonomy'] = $shortoce_settings_taxonomy['taxonomy'];
             $args['show_description'] = $shortoce_settings_taxonomy['term_description'];
+            $args['post_data'] = $shortoce_settings_taxonomy['post_data'];
+            $args['post_meta_fields'] = $shortoce_settings_taxonomy['post_meta_fields'];
+            p($args, 0);
+            
             return Template_View_Loader::get_template('template-top-level', $args);
         }
         

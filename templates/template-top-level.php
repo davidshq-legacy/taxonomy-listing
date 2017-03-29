@@ -5,6 +5,8 @@
     
     $terms = $this->get('terms');
     $show_description = $this->get('show_description');
+    $post_data = $this->get('post_data');
+    $post_meta_fields = $this->get('post_meta_fields');
     
     if (is_wp_error($terms)) {
         
@@ -18,15 +20,30 @@
         echo "</ul>";
         
     } else {
+    
+        $query_str = '';
+        if(!empty($show_description))
+            $query_str .= 'show_description=' . $show_description . '&';
+        if(!empty($post_data))
+            $query_str .= 'post_data=' . implode('|', $post_data) . '&';
+        if(!empty($post_meta_fields))
+            $query_str .= 'post_meta_fields=' . str_replace(' ', '', $post_meta_fields);
+    
+        $query_str = rtrim($query_str, '&');
         
         echo "<ul>";
         foreach ($terms as $index => $term) {
             
+            $term_link = get_term_link($term);
+            if(!empty($query_str)) {
+                $term_link .= '?' . $query_str;
+            }
+            
             echo "<li class='scrptz-top-terms'>" .
-                 "<a href='" . get_term_link($term) . "'>$term->name</a>" .
+                 "<a href='" . $term_link . "'>$term->name</a>" .
                  "</li>";
             
-            if ("on" == $this->get("show_description")) {
+            if ("on" == $show_description) {
                 if (!empty($term->description)) {
                     ?>
                     <small>

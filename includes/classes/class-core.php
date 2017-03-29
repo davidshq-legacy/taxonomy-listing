@@ -19,6 +19,7 @@
             $term_children = get_terms(array(
                     'parent'   => $wp_query->queried_object->term_id,
                     'taxonomy' => $wp_query->queried_object->taxonomy,
+                    'parent' => 0
                 )
             );
             

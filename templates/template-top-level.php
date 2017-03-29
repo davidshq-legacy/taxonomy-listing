@@ -20,22 +20,28 @@
         echo "</ul>";
         
     } else {
-    
+        
         $query_str = '';
-        if(!empty($show_description))
+        if (!empty($show_description)) {
             $query_str .= 'show_description=' . $show_description . '&';
-        if(!empty($post_data))
+        }
+        if (!empty($post_data)) {
             $query_str .= 'post_data=' . implode('|', $post_data) . '&';
-        if(!empty($post_meta_fields))
-            $query_str .= 'post_meta_fields=' . str_replace(' ', '', $post_meta_fields);
-    
+        }
+        if (!empty($post_meta_fields)) {
+            $tmp = $post_meta_fields;
+            $tmp = str_replace(' ', '', $tmp);
+            $tmp = str_replace(',', '|', $tmp);
+            $query_str .= 'post_meta_fields=' . $tmp;
+        }
+        
         $query_str = rtrim($query_str, '&');
         
         echo "<ul>";
         foreach ($terms as $index => $term) {
             
             $term_link = get_term_link($term);
-            if(!empty($query_str)) {
+            if (!empty($query_str)) {
                 $term_link .= '?' . $query_str;
             }
             

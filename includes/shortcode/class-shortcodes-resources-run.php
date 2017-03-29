@@ -73,7 +73,6 @@
             $args['show_description'] = $shortoce_settings_taxonomy['term_description'];
             $args['post_data'] = $shortoce_settings_taxonomy['post_data'];
             $args['post_meta_fields'] = $shortoce_settings_taxonomy['post_meta_fields'];
-            p($args, 0);
             
             return Template_View_Loader::get_template('template-top-level', $args);
         }

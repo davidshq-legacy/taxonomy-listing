@@ -30,6 +30,9 @@
          */
         public $atts_defaults = array(
             'select_taxonomy'  => 'category', // taxonomy identifier
+            'term_description'  => false,
+            'post_data'  => '',
+            'post_meta_fields'  => '',
         );
         
         protected $plugin = null;
@@ -53,15 +56,20 @@
         
         protected function _shortcode()
         {
-            $taxonomy = $this->att('select_taxonomy');
-    
+            $shortoce_settings_taxonomy = [
+                'taxonomy' => $this->att('select_taxonomy'),
+                'term_description' => (bool)$this->att('term_description'),
+                'post_data' => $this->att('post_data'),
+                'post_meta_fields' => $this->att('post_meta_fields')
+            ];
+            
             $args['terms'] = get_terms(array(
-                'taxonomy' => $taxonomy,
+                'taxonomy' => $shortoce_settings_taxonomy['taxonomy'],
                 'hide_empty' => true,
                 'parent'   => 0,
             ));
-            $args['taxonomy'] = $taxonomy;
-            $args['show_description'] = scprtz_tdl_get_option('term_description', "off");
+            $args['taxonomy'] = $shortoce_settings_taxonomy['taxonomy'];
+            $args['show_description'] = $shortoce_settings_taxonomy['term_description'];
             return Template_View_Loader::get_template('template-top-level', $args);
         }
         

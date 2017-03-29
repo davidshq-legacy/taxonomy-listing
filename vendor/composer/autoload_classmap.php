@@ -11,7 +11,6 @@ return array(
     'SCRPTZ_TDL_Shortcodes_Resources' => $baseDir . '/includes/shortcode/class-shortcodes-resources.php',
     'SCRPTZ_TDL_Shortcodes_Resources_Admin' => $baseDir . '/includes/shortcode/class-shortcodes-resources-admin.php',
     'SCRPTZ_TDL_Shortcodes_Resources_Run' => $baseDir . '/includes/shortcode/class-shortcodes-resources-run.php',
-    'SCRPTZ_TDL_plugin_option' => $baseDir . '/includes/classes/class-plugin-option.php',
     'Template_Loader' => $baseDir . '/includes/templates/class-template-loader.php',
     'Template_View_Loader' => $baseDir . '/includes/templates/class-template-view-loader.php',
 );

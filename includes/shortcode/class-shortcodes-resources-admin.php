@@ -46,7 +46,7 @@
                 SCRPTZ_TDL_Functionality::VERSION,
                 $this->run->atts_defaults
             );
-            
+    
         }
         
         /**
@@ -83,25 +83,54 @@
                 'show_option_none' => false,
                 'default'          => '',
                 'options'          => $this->get_taxonomies(),
+                
+            );
             
+            $fields[] = array(
+                'name'    => __('Term Description', 'scrptz-tdl'),
+                'desc'    => __('Show term description', 'scrptz-tdl'),
+                'id'      => 'term_description',
+                'type'    => 'checkbox',
+                'default' => false
+            );
+            
+            $fields[] = array(
+                'name'             => esc_html__('Extra Post Data', 'scrptz-tdl'),
+                'desc'             => esc_html__('Show extra post data below the item listing',
+                    'scrptz-tdl'),
+                'id'               => 'post_data',
+                'type'             => 'select_multiple',
+                'show_option_none' => true,
+                'options'          => array(
+                    ''  => esc_html__('None', 'scrptz-tdl'),
+                    'post_excerpt' => esc_html__('Excerpt', 'scrptz-tdl'),
+                    'post_author'  => esc_html__('Author', 'scrptz-tdl'),
+                    'post_date'    => esc_html__('Post Date', 'scrptz-tdl'),
+                ),
+            );
+            
+            $fields[] = array(
+                'name'    => __('Post Meta Fields', 'scrptz-tdl'),
+                'desc'    => __('Show post meta fields values below the item listing (for multiple option input comma separated links, ' .
+                                'enter exact meta_key value)', 'scrptz-tdl'),
+                'id'      => 'post_meta_fields',
+                'type'    => 'text',
+                'default' => '',
             );
             
             return $fields;
         }
-        
-        public function get_taxonomies()
-        {
+    
+        public function get_taxonomies() {
             $taxonomies = get_taxonomies();
             $hRarchy_taxnmy_list = array();
             foreach ($taxonomies as $index => $taxonomy) {
-                if (!in_array($taxonomy, $this->exclude_taxonomy)) {
-                    if (is_taxonomy_hierarchical($taxonomy)) {
+                if(!in_array($taxonomy, $this->exclude_taxonomy)) {
+                    if(is_taxonomy_hierarchical($taxonomy)) {
                         $hRarchy_taxnmy_list[$taxonomy] = $taxonomy;
                     }
                 }
             }
-            
             return $hRarchy_taxnmy_list;
         }
-        
     }

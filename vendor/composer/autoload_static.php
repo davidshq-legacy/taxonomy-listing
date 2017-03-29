@@ -17,7 +17,6 @@ class ComposerStaticInit11a34f05c4d7e2608496dcf6679ab519
         'SCRPTZ_TDL_Shortcodes_Resources' => __DIR__ . '/../..' . '/includes/shortcode/class-shortcodes-resources.php',
         'SCRPTZ_TDL_Shortcodes_Resources_Admin' => __DIR__ . '/../..' . '/includes/shortcode/class-shortcodes-resources-admin.php',
         'SCRPTZ_TDL_Shortcodes_Resources_Run' => __DIR__ . '/../..' . '/includes/shortcode/class-shortcodes-resources-run.php',
-        'SCRPTZ_TDL_plugin_option' => __DIR__ . '/../..' . '/includes/classes/class-plugin-option.php',
         'Template_Loader' => __DIR__ . '/../..' . '/includes/templates/class-template-loader.php',
         'Template_View_Loader' => __DIR__ . '/../..' . '/includes/templates/class-template-view-loader.php',
     );

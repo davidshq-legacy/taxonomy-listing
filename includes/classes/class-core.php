@@ -44,17 +44,19 @@
             global $wp_query;
             $wp_query->query_vars['posts_per_page'] = 0;
             
-            /*$args = array(
+            $args = array(
+                'posts_per_page' => 0,
                 'tax_query' => array(
                     array(
                         'taxonomy' => $wp_query->queried_object->taxonomy,
                         'field'    => 'slug',
-                        'terms'    => $wp_query->queried_object->slug
+                        'terms'    => $wp_query->queried_object->slug,
+                        'include_children' => false
                     )
                 )
-            );*/
+            );
             
-            $term_posts = get_posts($wp_query->query_vars);
+            $term_posts = get_posts($args);
             
             if (!empty($term_posts)) {
                 $data['term_posts'] = $term_posts;
@@ -68,6 +70,7 @@
                 $data['post'] = $term_post;
                 $data['show_post_data'] = array_filter(isset($_GET['post_data']) ? explode('|', $_GET['post_data']) : []);
                 $post_meta_fields = array_filter(isset($_GET['post_meta_fields']) ? explode('|', $_GET['post_meta_fields']) : []);
+                $data['show_post_meta_fields'] = [];
                 foreach ($post_meta_fields as $index => $post_meta_field) {
                     $data['show_post_meta_fields'][$post_meta_field] = get_post_meta($term_post->ID, $post_meta_field, true);
                 }

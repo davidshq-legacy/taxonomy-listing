@@ -79,10 +79,7 @@
             if ($file) {
 
                 $template = locate_template(array_unique($find));
-                $status_options = get_option('woocommerce_status_options', array());
-                if (!$template || (!empty($status_options['template_debug_mode']) &&
-                                   current_user_can('manage_options'))
-                ) {
+                if (!$template) {
                     $template = SCRPTZ_TDL_Functionality::$path . 'templates/' . $file;
                     if(!file_exists($template)) {
                         $template = SCRPTZ_TDL_Functionality::$path . 'templates/' . $base_template;

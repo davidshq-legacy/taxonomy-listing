@@ -236,9 +236,9 @@
             $this->template_load = new Template_Loader($this);
             
             // Only create the full metabox object if in the admin.
-            if (is_admin()) {
+            /*if (is_admin()) {
             } else {
-            }
+            }*/
             
         }
         

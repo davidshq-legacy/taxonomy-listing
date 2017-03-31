@@ -111,7 +111,6 @@
                 'type'             => 'select_multiple',
                 'show_option_none' => true,
                 'options'          => array(
-                    ''             => esc_html__('None', 'scrptz-tdl'),
                     'post_excerpt' => esc_html__('Excerpt', 'scrptz-tdl'),
                     'post_author'  => esc_html__('Author', 'scrptz-tdl'),
                     'post_date'    => esc_html__('Post Date', 'scrptz-tdl'),

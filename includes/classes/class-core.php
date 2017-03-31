@@ -45,6 +45,7 @@
             $wp_query->query_vars['posts_per_page'] = 0;
             
             $args = array(
+                'post_type' => get_post_type(),
                 'posts_per_page' => 0,
                 'tax_query' => array(
                     array(
@@ -55,7 +56,7 @@
                     )
                 )
             );
-            
+    
             $term_posts = get_posts($args);
             
             if (!empty($term_posts)) {

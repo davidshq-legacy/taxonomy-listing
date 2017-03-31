@@ -29,9 +29,7 @@
             $query_str .= 'post_data=' . implode('|', $post_data) . '&';
         }
         if (!empty($post_meta_fields)) {
-            $tmp = $post_meta_fields;
-            $tmp = str_replace(' ', '', $tmp);
-            $tmp = str_replace(',', '|', $tmp);
+            $tmp = implode('|', $post_meta_fields);
             $query_str .= 'post_meta_fields=' . $tmp;
         }
         

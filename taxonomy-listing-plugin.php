@@ -131,21 +131,6 @@
         }
         
         /**
-         * This plugin's url
-         *
-         * @since  1.0.0
-         * @param  string $path (optional) appended path.
-         * @return string       URL and path
-         */
-        public static function url($path = '')
-        {
-            static $url;
-            $url = $url ? $url : trailingslashit(plugin_dir_url(__FILE__));
-            
-            return $url . $path;
-        }
-        
-        /**
          * Add hooks and filters
          *
          * @since  1.0.0
@@ -266,7 +251,7 @@
             }
             include __DIR__ . '/dev/Logging_Mods.php';
         }
-    
+        
         /**
          * enqueue js from plugin
          *
@@ -278,13 +263,45 @@
             $min = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
             
             wp_enqueue_script(
-                'scrptz-tdl-admin-js',
+                'scrptz-tdl-main-js',
                 SCRPTZ_TDL_Functionality::url("templates/js/main{$min}.js"),
                 array('jquery'),
                 SCRPTZ_TDL_Functionality::VERSION
             );
+            
+            if (is_admin()) {
+                
+                wp_enqueue_script(
+                    'scrptz-tdl-admin-main-js',
+                    SCRPTZ_TDL_Functionality::url("templates/admin/js/main{$min}.js"),
+                    array('jquery'),
+                    SCRPTZ_TDL_Functionality::VERSION
+                );
+                
+                wp_enqueue_script(
+                    'scrptz-tdl-admin-select2-js',
+                    SCRPTZ_TDL_Functionality::url("bower_components/select2/dist/js/select2{$min}.js"),
+                    array('jquery'),
+                    SCRPTZ_TDL_Functionality::VERSION
+                );
+            }
         }
-    
+        
+        /**
+         * This plugin's url
+         *
+         * @since  1.0.0
+         * @param  string $path (optional) appended path.
+         * @return string       URL and path
+         */
+        public static function url($path = '')
+        {
+            static $url;
+            $url = $url ? $url : trailingslashit(plugin_dir_url(__FILE__));
+            
+            return $url . $path;
+        }
+        
         /**
          * enqueue css from plugin
          *
@@ -296,11 +313,28 @@
             $min = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
             
             wp_enqueue_style(
-                'scrptz-tdl-admin-css',
+                'scrptz-tdl-main',
                 SCRPTZ_TDL_Functionality::url("templates/css/main{$min}.css"),
                 array(),
                 SCRPTZ_TDL_Functionality::VERSION
             );
+            
+            if (is_admin()) {
+                
+                wp_enqueue_style(
+                    'scrptz-tdl-admin-main',
+                    SCRPTZ_TDL_Functionality::url("templates/admin/css/main{$min}.css"),
+                    array(),
+                    SCRPTZ_TDL_Functionality::VERSION
+                );
+                
+                wp_enqueue_style(
+                    'scrptz-tdl-admin-select2',
+                    SCRPTZ_TDL_Functionality::url("bower_components/select2/dist/css/select2{$min}.css"),
+                    array(),
+                    SCRPTZ_TDL_Functionality::VERSION
+                );
+            }
         }
         
         /**

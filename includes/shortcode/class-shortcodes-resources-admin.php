@@ -46,14 +46,14 @@
                 SCRPTZ_TDL_Functionality::VERSION,
                 $this->run->atts_defaults
             );
-    
+            
             add_action('cmb2_render_text_number', array($this, 'meta_addtnl_type_text_number'), 10,
                 5);
-    
+            
             add_action('cmb2_render_select_multiple',
                 array($this, 'cmb2_render_select_multiple_field_type'), 10,
                 5);
-    
+            
             add_filter('cmb2_sanitize_select_multiple',
                 array($this, 'cmb2_sanitize_select_multiple_callback'),
                 10, 2);
@@ -84,7 +84,6 @@
          */
         function fields($fields, $button_data)
         {
-            
             $fields[] = array(
                 'name'             => __('Taxonomy', 'scrptz-tdl'),
                 'desc'             => __('Select Taxonomy', 'scrptz-tdl'),
@@ -93,7 +92,7 @@
                 'show_option_none' => false,
                 'default'          => '',
                 'options'          => $this->get_taxonomies(),
-                
+            
             );
             
             $fields[] = array(
@@ -112,38 +111,46 @@
                 'type'             => 'select_multiple',
                 'show_option_none' => true,
                 'options'          => array(
-                    ''  => esc_html__('None', 'scrptz-tdl'),
+                    ''             => esc_html__('None', 'scrptz-tdl'),
                     'post_excerpt' => esc_html__('Excerpt', 'scrptz-tdl'),
                     'post_author'  => esc_html__('Author', 'scrptz-tdl'),
                     'post_date'    => esc_html__('Post Date', 'scrptz-tdl'),
                 ),
             );
+    
+            $post_meta_key = [];
+            foreach ($this->get_all_meta_keys() as $index => $all_meta_key) {
+                $post_meta_key[$all_meta_key] = $all_meta_key;
+            }
             
             $fields[] = array(
-                'name'    => __('Post Meta Fields', 'scrptz-tdl'),
-                'desc'    => __('Show post meta fields values below the item listing (for multiple option input comma separated links, ' .
-                                'enter exact meta_key value)', 'scrptz-tdl'),
-                'id'      => 'post_meta_fields',
-                'type'    => 'text',
-                'default' => '',
+                'name'             => esc_html__('Post Meta Fields', 'scrptz-tdl'),
+                'desc'             => esc_html__('Show post meta fields values below the item listing',
+                    'scrptz-tdl'),
+                'id'               => 'post_meta_fields',
+                'type'             => 'select_multiple',
+                'show_option_none' => true,
+                'options'          => $post_meta_key,
             );
-            
+    
             return $fields;
         }
-    
-        public function get_taxonomies() {
+        
+        public function get_taxonomies()
+        {
             $taxonomies = get_taxonomies();
             $hRarchy_taxnmy_list = array();
             foreach ($taxonomies as $index => $taxonomy) {
-                if(!in_array($taxonomy, $this->exclude_taxonomy)) {
-                    if(is_taxonomy_hierarchical($taxonomy)) {
+                if (!in_array($taxonomy, $this->exclude_taxonomy)) {
+                    if (is_taxonomy_hierarchical($taxonomy)) {
                         $hRarchy_taxnmy_list[$taxonomy] = $taxonomy;
                     }
                 }
             }
+            
             return $hRarchy_taxnmy_list;
         }
-    
+        
         /**
          * input type number for meta fields
          *
@@ -162,7 +169,7 @@
         ) {
             echo $field_type_object->input(array('type' => 'number', 'min' => 0));
         }
-    
+        
         /**
          * Adds a custom field type for select multiples.
          *
@@ -180,7 +187,7 @@
             $object_type,
             $field_type_object
         ) {
-            $select_multiple = '<select class="widefat" multiple name="' . $field->args['_name'] .
+            $select_multiple = '<select class="widefat scrptz-tdl-select2" multiple="multiple" name="' . $field->args['_name'] .
                                '[]" id="' . $field->args['_id'] . '"';
             foreach ($field->args['attributes'] as $attribute => $value) {
                 $select_multiple .= " $attribute=\"$value\"";
@@ -196,7 +203,7 @@
             $select_multiple .= $field_type_object->_desc(true);
             echo $select_multiple; // WPCS: XSS ok.
         }
-    
+        
         /**
          * Sanitize the selected value.
          */
@@ -206,11 +213,35 @@
                 foreach ($value as $key => $saved_value) {
                     $value[$key] = sanitize_text_field($saved_value);
                 }
-            
+                
                 return $value;
             }
-        
+            
             return;
+        }
+        
+        function generate_all_meta_keys()
+        {
+            global $wpdb;
+            $post_type = 'foods';
+            $query
+                = "
+                        SELECT DISTINCT($wpdb->postmeta.meta_key)
+                        FROM $wpdb->postmeta
+                        WHERE $wpdb->postmeta.meta_key != ''
+                        AND $wpdb->postmeta.meta_key NOT RegExp '(^[_0-9].+$)'
+                        AND $wpdb->postmeta.meta_key NOT RegExp '(^[0-9]+$)'
+                    ";
+            $meta_keys = $wpdb->get_col($query);
+            set_transient('scrptz_tdl_all_meta_keys', $meta_keys, 60 * 60 * 24); # create 1 Day Expiration
+            
+            return $meta_keys;
+        }
+    
+        function get_all_meta_keys(){
+            $cache = get_transient('scrptz_tdl_all_meta_keys');
+            $meta_keys = $cache ? $cache : $this->generate_all_meta_keys();
+            return $meta_keys;
         }
         
     }

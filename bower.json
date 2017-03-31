@@ -1,0 +1,21 @@
+{
+  "name": "taxonomy-listing-plugin",
+  "homepage": "https://github.com/surajprgupta/taxonomy-listing",
+  "authors": [
+    "surajgupta <suraj.gupta.489@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "select2": "^4.0.3"
+  }
+}

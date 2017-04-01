@@ -262,13 +262,6 @@
         {
             $min = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
             
-            wp_enqueue_script(
-                'scrptz-tdl-main-js',
-                SCRPTZ_TDL_Functionality::url("templates/js/main{$min}.js"),
-                array('jquery'),
-                SCRPTZ_TDL_Functionality::VERSION
-            );
-            
             if (is_admin()) {
                 
                 wp_enqueue_script(
@@ -281,6 +274,14 @@
                 wp_enqueue_script(
                     'scrptz-tdl-admin-select2-js',
                     SCRPTZ_TDL_Functionality::url("bower_components/select2/dist/js/select2{$min}.js"),
+                    array('jquery'),
+                    SCRPTZ_TDL_Functionality::VERSION
+                );
+            } else {
+    
+                wp_enqueue_script(
+                    'scrptz-tdl-main-js',
+                    SCRPTZ_TDL_Functionality::url("templates/js/main{$min}.js"),
                     array('jquery'),
                     SCRPTZ_TDL_Functionality::VERSION
                 );
@@ -312,13 +313,6 @@
         {
             $min = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
             
-            wp_enqueue_style(
-                'scrptz-tdl-main',
-                SCRPTZ_TDL_Functionality::url("templates/css/main{$min}.css"),
-                array(),
-                SCRPTZ_TDL_Functionality::VERSION
-            );
-            
             if (is_admin()) {
                 
                 wp_enqueue_style(
@@ -331,6 +325,14 @@
                 wp_enqueue_style(
                     'scrptz-tdl-admin-select2',
                     SCRPTZ_TDL_Functionality::url("bower_components/select2/dist/css/select2{$min}.css"),
+                    array(),
+                    SCRPTZ_TDL_Functionality::VERSION
+                );
+            } else {
+    
+                wp_enqueue_style(
+                    'scrptz-tdl-main',
+                    SCRPTZ_TDL_Functionality::url("templates/css/main{$min}.css"),
                     array(),
                     SCRPTZ_TDL_Functionality::VERSION
                 );

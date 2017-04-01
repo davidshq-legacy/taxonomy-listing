@@ -2,6 +2,6 @@
     width: 100% !important;
 }
 
-.select2-dropdown {
+.select2-dropdown, .select2-drop {
     z-index: 999999 !important;
 }

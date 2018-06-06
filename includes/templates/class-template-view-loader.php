@@ -45,18 +45,19 @@
          * @since 1.0.0
          */
         protected $extension = '.php';
-        
-        /**
-         * HTML view template loader constructor.
-         *
-         * @since  1.0.0
-         *
-         * @param string $template The template file name, relative to the includes/templates/ folder - with or without .php extension
-         * @param string $name     The name of the specialised template. If array, will take the place of the $args.
-         * @param array  $args     An array of arguments to extract as variables into the template
-         *
-         * @return void
-         */
+
+	    /**
+	     * HTML view template loader constructor.
+	     *
+	     * @since  1.0.0
+	     *
+	     * @param string $template The template file name, relative to the includes/templates/ folder - with or without .php extension
+	     * @param string $name The name of the specialised template. If array, will take the place of the $args.
+	     * @param array $args An array of arguments to extract as variables into the template
+	     *
+	     * @throws Exception
+	     * @return void
+	     */
         public function __construct($template, $name = null, array $args = array())
         {
             if (empty($template)) {
@@ -78,38 +79,40 @@
             
             $this->templates[] = $file;
         }
-        
-        /**
-         * Get a rendered HTML view with the given arguments and return the view's contents.
-         *
-         * @since  1.0.0
-         *
-         * @param string $template  The template file name, relative to the includes/templates/ folder
-         *                          - without .php extension
-         * @param string $name      The name of the specialised template. If array, will take the place of the $args.
-         * @param array  $args      An array of arguments to extract as variables into the template
-         *
-         * @return string           Rendered template output
-         */
+
+	    /**
+	     * Get a rendered HTML view with the given arguments and return the view's contents.
+	     *
+	     * @since  1.0.0
+	     *
+	     * @param string $template The template file name, relative to the includes/templates/ folder
+	     *                          - without .php extension
+	     * @param string $name The name of the specialised template. If array, will take the place of the $args.
+	     * @param array $args An array of arguments to extract as variables into the template
+	     *
+	     * @return string           Rendered template output
+	     * @throws Exception
+	     */
         public static function get_template($template, $name = null, array $args = array())
         {
             $view = new self($template, $name, $args);
             
             return $view->load();
         }
-        
-        /**
-         * Render an HTML view with the given arguments and output the view's contents.
-         *
-         * @since  1.0.0
-         *
-         * @param  string $template The template file name, relative to the includes/templates/ folder
-         *                          - without .php extension
-         * @param  string $name     The name of the specialised template. If array, will take the place of the $args.
-         * @param  array  $args     An array of arguments to extract as variables into the template
-         *
-         * @return void
-         */
+
+	    /**
+	     * Render an HTML view with the given arguments and output the view's contents.
+	     *
+	     * @since  1.0.0
+	     *
+	     * @param  string $template The template file name, relative to the includes/templates/ folder
+	     *                          - without .php extension
+	     * @param  string $name The name of the specialised template. If array, will take the place of the $args.
+	     * @param  array $args An array of arguments to extract as variables into the template
+	     *
+	     * @return void
+	     * @throws Exception
+	     */
         public static function output_template($template, $name = null, array $args = array())
         {
             $view = new self($template, $name, $args);
@@ -256,7 +259,7 @@
          *
          * @param  string $template Template file to search for.
          *
-         * @return void
+         * @return string|void
          */
         protected function _locate($template)
         {

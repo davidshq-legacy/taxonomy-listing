@@ -168,17 +168,18 @@
         ) {
             echo $field_type_object->input(array('type' => 'number', 'min' => 0));
         }
-        
-        /**
-         * Adds a custom field type for select multiples.
-         *
-         * @param  object $field             The CMB2_Field type object.
-         * @param  string $value             The saved (and escaped) value.
-         * @param  int    $object_id         The current post ID.
-         * @param  string $object_type       The current object type.
-         * @param  object $field_type_object The CMB2_Types object.
-         * @return void
-         */
+
+	    /**
+	     * Adds a custom field type for select multiples.
+	     *
+	     * @param  object $field The CMB2_Field type object.
+	     * @param  $escaped_value
+	     * @param  int $object_id The current post ID.
+	     * @param  string $object_type The current object type.
+	     * @param  object $field_type_object The CMB2_Types object.
+	     *
+	     * @return void
+	     */
         function cmb2_render_select_multiple_field_type(
             $field,
             $escaped_value,
@@ -202,10 +203,15 @@
             $select_multiple .= $field_type_object->_desc(true);
             echo $select_multiple; // WPCS: XSS ok.
         }
-        
-        /**
-         * Sanitize the selected value.
-         */
+
+	    /**
+	     * Sanitize the selected value.
+	     *
+	     * @param $override_value
+	     * @param $value
+	     *
+	     * @return array|void
+	     */
         function cmb2_sanitize_select_multiple_callback($override_value, $value)
         {
             if (is_array($value)) {
@@ -222,7 +228,6 @@
         function generate_all_meta_keys()
         {
             global $wpdb;
-            $post_type = 'foods';
             $query
                 = "
                         SELECT DISTINCT($wpdb->postmeta.meta_key)

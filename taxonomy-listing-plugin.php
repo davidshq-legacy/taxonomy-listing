@@ -234,15 +234,12 @@
             
             $this->shortcode = new SCRPTZ_TDL_Shortcodes($this);
             $this->template_load = new Template_Loader($this);
-            
-            // Only create the full metabox object if in the admin.
-            /*if (is_admin()) {
-            } else {
-            }*/
-            
         }
-        
-        public function add_dev_classes()
+
+	    /**
+	     * Add Dev Classes
+	     */
+	    public function add_dev_classes()
         {
             if (defined('SCRPTZ_TDL_ENV') && SCRPTZ_TDL_ENV == 'development') {
                 if (file_exists(__DIR__ . '/dev/WP_Logging.php')) {

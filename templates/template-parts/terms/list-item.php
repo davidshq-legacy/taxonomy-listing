@@ -29,12 +29,9 @@
         if (true == $show_description) {
             if (!empty($term->description)) {
                 ?>
-                <br/>
-                <small>
                     <?php
                         echo ' - ' . $term->description;
                     ?>
-                </small>
                 <?php
             }
         }

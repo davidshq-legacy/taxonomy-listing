@@ -17,19 +17,16 @@
             if ($item == 'post_excerpt') {
                 $excerpt = scprtz_tdl_get_excerpt_by_id($post->ID);
                 if (!empty($excerpt)) {
-                    echo '<br/><small>' . ' - ' . scprtz_tdl_get_excerpt_by_id($post->ID) .
-                         '</small>';
+                    echo ' - ' . scprtz_tdl_get_excerpt_by_id($post->ID);
                 }
             }
             
             if ($item == 'post_author') {
-                echo '<br/><small>' . ' - ' . get_the_author_meta('nickname', $post->post_author) .
-                     '</small>';
+                echo ' - ' . get_the_author_meta('nickname', $post->post_author);
             }
             
             if ($item == 'post_date') {
-                echo '<br/><small>' . ' - ' . date('d F Y', strtotime($post->post_date)) .
-                     '</small>';
+                echo ' - ' . date('d F Y', strtotime($post->post_date));
             }
             
             ?>
@@ -39,7 +36,7 @@
         foreach ($show_post_meta_fields as $index => $item) {
             
             if (!empty($item)) {
-                echo '<br/><small>' . ' - ' . $item . '</small>';
+                echo ' - ' . $item;
             }
         }
     

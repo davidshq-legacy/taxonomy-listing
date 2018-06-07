@@ -3,7 +3,6 @@
     if (!empty($term_posts)) {
         ?>
         <div class="sub-terms-container">
-            <h2>Posts</h2>
             <ul>
                 <?php
                 try {

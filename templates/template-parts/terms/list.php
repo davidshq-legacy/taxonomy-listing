@@ -3,7 +3,6 @@
     if (!empty($term_children)) {
         ?>
         <div class="sub-terms-container">
-            <h2>Subcategories</h2>
             <ul>
                 <?php
                 try {

@@ -29,13 +29,19 @@
                 
                 <div class="child-terms">
                     <?php
-                        SCRPTZ_TDL_Core::get_term_children();
+                    try {
+	                    SCRPTZ_TDL_Core::get_term_children();
+                    } catch ( Exception $e ) {
+                    }
                     ?>
                 </div>
                 
                 <div class="child-posts">
                     <?php
-                        SCRPTZ_TDL_Core::get_term_posts();
+                    try {
+	                    SCRPTZ_TDL_Core::get_term_posts();
+                    } catch ( Exception $e ) {
+                    }
                     ?>
                 </div>
                 

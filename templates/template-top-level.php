@@ -1,5 +1,4 @@
-<style type="text/css"
-       src="<?php echo scrptz_tdl_func()->url() . "templates/css/main.css" ?>"></style>
+<style type="text/css" src="<?php echo scrptz_tdl_func()->url() . "templates/css/main.css" ?>"></style>
 
 <?php
     

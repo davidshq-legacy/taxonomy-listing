@@ -51,9 +51,12 @@
          */
         public function shortcode()
         {
-            $output = $this->_shortcode();
-            
-            return apply_filters($this->prefix . 'shortcode_output', $output, $this);
+	        try {
+		        $output = $this->_shortcode();
+	        } catch ( Exception $e ) {
+	        }
+
+	        return apply_filters($this->prefix . 'shortcode_output', $output, $this);
         }
 
 	    /**

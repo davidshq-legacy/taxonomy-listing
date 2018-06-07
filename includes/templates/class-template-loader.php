@@ -7,7 +7,7 @@
      */
     
     /**
-     * Template Loader.
+     * Template Loader Class.
      *
      * @since 1.0.0
      */
@@ -45,7 +45,6 @@
 	     */
 	    public function __construct()
         {
-            //            add_filter('archive_template', array($this, 'load_template'));
             add_filter('template_include', array($this, 'template_loader'));
         }
         

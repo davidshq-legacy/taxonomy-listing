@@ -7,7 +7,7 @@
      */
     
     /**
-     * Template Loader.
+     * Template Loader Class
      *
      * @since 1.0.0
      */
@@ -85,8 +85,7 @@
 	     *
 	     * @since  1.0.0
 	     *
-	     * @param string $template The template file name, relative to the includes/templates/ folder
-	     *                          - without .php extension
+	     * @param string $template The template file name, relative to the includes/templates/ folder without .php extension
 	     * @param string $name The name of the specialised template. If array, will take the place of the $args.
 	     * @param array $args An array of arguments to extract as variables into the template
 	     *
@@ -105,8 +104,7 @@
 	     *
 	     * @since  1.0.0
 	     *
-	     * @param  string $template The template file name, relative to the includes/templates/ folder
-	     *                          - without .php extension
+	     * @param  string $template The template file name, relative to the includes/templates/ folder without .php extension
 	     * @param  string $name The name of the specialised template. If array, will take the place of the $args.
 	     * @param  array $args An array of arguments to extract as variables into the template
 	     *

@@ -19,11 +19,13 @@
     
     // User composer autoload.
     require __DIR__ . '/vendor/autoload.php';
-    
-    /**
-     * Main initiation class
+
+/**
+ * Main initiation class
      *
-     * @since  1.0.0
+     * @property SCRPTZ_TDL_Shortcodes shortcode
+ * @property Template_Loader template_load
+ * @since  1.0.0
      */
     class SCRPTZ_TDL_Functionality
     {
@@ -66,7 +68,7 @@
          * @since  1.0.0
          */
         protected $basename = '';
-        
+
         /**
          * Sets up our plugin
          *

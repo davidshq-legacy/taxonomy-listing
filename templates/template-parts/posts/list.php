@@ -6,7 +6,10 @@
             <h2>Posts</h2>
             <ul>
                 <?php
-                    SCRPTZ_TDL_Core::get_term_posts_list($term_posts);
+                try {
+	                SCRPTZ_TDL_Core::get_term_posts_list( $term_posts );
+                } catch ( Exception $e ) {
+                }
                 ?>
             </ul>
         </div>

@@ -6,7 +6,10 @@
             <h2>Subcategories</h2>
             <ul>
                 <?php
-                    SCRPTZ_TDL_Core::get_term_children_list($term_children);
+                try {
+	                SCRPTZ_TDL_Core::get_term_children_list( $term_children );
+                } catch ( Exception $e ) {
+                }
                 ?>
             </ul>
         </div>

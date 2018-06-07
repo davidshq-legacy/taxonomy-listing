@@ -32,20 +32,25 @@
             add_action('wp_logging_prune_routine', array($this, 'prune_logs'), 100);
             
         }
-        
-                /**
-         * Create new log entry
-         *
-         * This is just a simple and fast way to log something. Use self::insert_log()
-         * if you need to store custom meta data
-         *
-         * @access      private
-         * @since       1.0
-         *
-         * @uses        self::insert_log()
-         *
-         * @return      int The ID of the new log entry
-         */
+
+	    /**
+	     * Create new log entry
+	     *
+	     * This is just a simple and fast way to log something. Use self::insert_log()
+	     * if you need to store custom meta data
+	     *
+	     * @access      private
+	     * @since       1.0
+	     *
+	     * @uses        self::insert_log()
+	     *
+	     * @param string $title
+	     * @param string $message
+	     * @param int $parent
+	     * @param null $type
+	     *
+	     * @return      int The ID of the new log entry
+	     */
         
         public static function add($title = '', $message = '', $parent = 0, $type = null)
         {
@@ -60,21 +65,24 @@
             return self::insert_log($log_data);
             
         } // prune_logs
-        
-                /**
-         * Stores a log entry
-         *
-         * @access      private
-         * @since       1.0
-         *
-         * @uses        wp_parse_args()
-         * @uses        wp_insert_post()
-         * @uses        update_post_meta()
-         * @uses        wp_set_object_terms()
-         * @uses        sanitize_key()
-         *
-         * @return      int The ID of the newly created log item
-         */
+
+	    /**
+	     * Stores a log entry
+	     *
+	     * @access      private
+	     * @since       1.0
+	     *
+	     * @uses        wp_parse_args()
+	     * @uses        wp_insert_post()
+	     * @uses        update_post_meta()
+	     * @uses        wp_set_object_terms()
+	     * @uses        sanitize_key()
+	     *
+	     * @param array $log_data
+	     * @param array $log_meta
+	     *
+	     * @return      int The ID of the newly created log item
+	     */
         
         public static function insert_log($log_data = array(), $log_meta = array())
         {
@@ -112,39 +120,44 @@
             return $log_id;
             
         } // prune_old_logs
-        
-                /**
-         * Check if a log type is valid
-         *
-         * Checks to see if the specified type is in the registered list of types
-         *
-         * @access      private
-         * @since       1.0
-         *
-         *
-         * @return     array
-         */
+
+	    /**
+	     * Check if a log type is valid
+	     *
+	     * Checks to see if the specified type is in the registered list of types
+	     *
+	     * @access      private
+	     * @since       1.0
+	     *
+	     *
+	     * @param $type
+	     *
+	     * @return bool
+	     */
         
         private static function valid_type($type)
         {
             return in_array($type, self::log_types());
         } // get_logs_to_prune
-        
-        /**
-         * Update and existing log item
-         *
-         * @access      private
-         * @since       1.0
-         *
-         * @uses        wp_parse_args()
-         * @uses        wp_update_post()
-         * @uses        update_post_meta()
-         *
-         * @return      bool True if successful, false otherwise
-         */
+
+	    /**
+	     * Update and existing log item
+	     *
+	     * @access      private
+	     * @since       1.0
+	     *
+	     * @uses        wp_parse_args()
+	     * @uses        wp_update_post()
+	     * @uses        update_post_meta()
+	     *
+	     * @param array $log_data
+	     * @param array $log_meta
+	     *
+	     * @return void True if successful, false otherwise
+	     */
         public static function update_log($log_data = array(), $log_meta = array())
         {
-            
+
             do_action('wp_pre_update_log', $log_id);
             
             $defaults = array(
@@ -169,17 +182,21 @@
             do_action('wp_post_update_log', $log_id);
             
         }
-        
-        /**
-         * Easily retrieves log items for a particular object ID
-         *
-         * @access      private
-         * @since       1.0
-         *
-         * @uses        self::get_connected_logs()
-         *
-         * @return      array
-         */
+
+	    /**
+	     * Easily retrieves log items for a particular object ID
+	     *
+	     * @access      private
+	     * @since       1.0
+	     *
+	     * @uses        self::get_connected_logs()
+	     *
+	     * @param int $object_id
+	     * @param null $type
+	     * @param null $paged
+	     *
+	     * @return      array
+	     */
         
         public static function get_logs($object_id = 0, $type = null, $paged = null)
         {

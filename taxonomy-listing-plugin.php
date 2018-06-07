@@ -2,17 +2,13 @@
     
     /**
      * Plugin Name: Taxonomy Directory Listing
-     * Plugin URI:  http://www.scripterz.in/
+     * Plugin URI:  http://github.com/davidshq
      * Description: Taxonomy Directory Listing
      * Version:     1.0.3
-     * Author:      Suraj Gupta
-     * Author URI:  https://twitter.com/surajprgupta
-     * Donate link: https://www.paypal.me/surajprgupta
+     * Author:      Suraj Gupta, Dave Mackey
      * License:     GPLv2
      * Text Domain: scrptz-tdl
      * Domain Path: /languages
-     *
-     * @link    http://www.scripterz.in/
      *
      * @package Taxonomy Directory Listing
      * @version 1.0.0

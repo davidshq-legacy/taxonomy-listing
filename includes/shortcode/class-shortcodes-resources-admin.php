@@ -29,7 +29,7 @@
                 "link_category",
                 "post_format"
             );
-        
+
         /**
          * Constructor
          *
@@ -134,8 +134,14 @@
     
             return $fields;
         }
-        
-        public function get_taxonomies()
+
+	    /**
+	     * Get Taxonomies
+	     *
+	     * @return array
+	     * @since 1.0.0
+	     */
+	    public function get_taxonomies()
         {
             $taxonomies = get_taxonomies();
             $hRarchy_taxnmy_list = array();
@@ -158,6 +164,7 @@
          * @param $object_id
          * @param $object_type
          * @param $field_type_object
+         * @since 1.0.0
          */
         function meta_addtnl_type_text_number(
             $field,
@@ -179,6 +186,7 @@
 	     * @param  object $field_type_object The CMB2_Types object.
 	     *
 	     * @return void
+	     * @since 1.0.0
 	     */
         function cmb2_render_select_multiple_field_type(
             $field,
@@ -211,6 +219,7 @@
 	     * @param $value
 	     *
 	     * @return array|void
+	     * @since 1.0.0
 	     */
         function cmb2_sanitize_select_multiple_callback($override_value, $value)
         {
@@ -224,8 +233,14 @@
             
             return;
         }
-        
-        function generate_all_meta_keys()
+
+	    /**
+	     * Generate All Meta Keys
+	     *
+	     * @return array
+	     * @since 1.0.0
+	     */
+	    function generate_all_meta_keys()
         {
             global $wpdb;
             $query
@@ -241,8 +256,14 @@
             
             return $meta_keys;
         }
-    
-        function get_all_meta_keys(){
+
+	    /**
+	     * Get All Meta Keys
+	     *
+	     * @return array|mixed
+	     * @since 1.0.0
+	     */
+	    function get_all_meta_keys(){
             $cache = get_transient('scrptz_tdl_all_meta_keys');
             $meta_keys = $cache ? $cache : $this->generate_all_meta_keys();
             return $meta_keys;

@@ -46,6 +46,8 @@
         
         /**
          * Shortcode Output
+         *
+         * @since 1.0.0
          */
         public function shortcode()
         {
@@ -53,8 +55,15 @@
             
             return apply_filters($this->prefix . 'shortcode_output', $output, $this);
         }
-        
-        protected function _shortcode()
+
+	    /**
+	     * Shortcode
+	     *
+	     * @return string
+	     * @throws Exception
+	     * @since 1.0.0
+	     */
+	    protected function _shortcode()
         {
             $shortoce_settings_taxonomy = [
                 'taxonomy' => $this->att('select_taxonomy'),

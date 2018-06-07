@@ -1,0 +1,2 @@
+# What is Taxonomy Listing Plugin?
+This plugin was the brainchild of Dave Mackey for the site philcata.com with the code actually being written by Suraj Gupta. Since then Dave Mackey continues to refine the code further.

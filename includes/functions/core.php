@@ -1,12 +1,18 @@
 <?php
     
     /**
-     * Get template part (for templates like the shop-loop).
+     * Get template part
+     *
+     * Searches several areas for the appropriate template part in the following order:
+     *  - yourtheme/slug-name.php and yourtheme/scrptz-tdl/slug-name.php
+     *  - slug-name.php
+     *  - yourtheme/slug.php and yourtheme/scrptz-tdl/slug
      *
      * @access public
      * @param mixed $slug
      * @param string $name (default: '')
      * @return void
+     * @since 1.0.0
      */
     function scrptz_get_template_part( $slug, $name = '' ) {
         $template = '';
@@ -33,8 +39,18 @@
             load_template( $template, false );
         }
     }
-    
-    function scprtz_tdl_get_excerpt_by_id($post_id){
+
+/**
+ * Get Excerpt by ID
+ *
+ * Returns an excerpt for a specified post ID.
+ *
+ * @param $post_id
+ *
+ * @return string
+ * @since 1.0.0
+ */
+function scprtz_tdl_get_excerpt_by_id($post_id){
         $the_post = get_post($post_id); //Gets post ID
         $the_excerpt = $the_post->post_content; //Gets post_content to be used as a basis for the excerpt
         $excerpt_length = 25; //Sets excerpt length by word count

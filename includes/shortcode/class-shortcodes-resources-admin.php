@@ -144,16 +144,16 @@
 	    public function get_taxonomies()
         {
             $taxonomies = get_taxonomies();
-            $hRarchy_taxnmy_list = array();
+            $hierarchy_taxonomy_list = array();
             foreach ($taxonomies as $index => $taxonomy) {
                 if (!in_array($taxonomy, $this->exclude_taxonomy)) {
                     if (is_taxonomy_hierarchical($taxonomy)) {
-                        $hRarchy_taxnmy_list[$taxonomy] = $taxonomy;
+                        $hierarchy_taxonomy_list[$taxonomy] = $taxonomy;
                     }
                 }
             }
             
-            return $hRarchy_taxnmy_list;
+            return $hierarchy_taxonomy_list;
         }
         
         /**

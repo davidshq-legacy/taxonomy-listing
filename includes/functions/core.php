@@ -63,7 +63,5 @@ function scprtz_tdl_get_excerpt_by_id($post_id){
             $the_excerpt = implode(' ', $words);
         endif;
         
-        $the_excerpt = $the_excerpt;
-        
         return $the_excerpt;
     }

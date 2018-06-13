@@ -2,8 +2,8 @@
     
     /**
      * Plugin Name: Taxonomy Directory Listing
-     * Plugin URI:  http://github.com/davidshq
-     * Description: Taxonomy Directory Listing
+     * Plugin URI:  https://github.com/davidshq/taxonomy-listing
+     * Description: Allows one to use taxonomies to create a directory-esque layout.
      * Version:     1.0.3
      * Author:      Suraj Gupta, Dave Mackey
      * License:     GPLv2
@@ -14,19 +14,19 @@
      * @version 1.0.0
      */
     
-    //define SCRPTZ_TDL_ENV
-    define('SCRPTZ_TDL_ENV', 'development');
+    //define SCRPTZ_TDL_ENV, set to development to enable logging
+    define('SCRPTZ_TDL_ENV', 'production');
     
-    // User composer autoload.
+    // Use composer autoload.
     require __DIR__ . '/vendor/autoload.php';
 
 /**
  * Main initiation class
-     *
-     * @property SCRPTZ_TDL_Shortcodes shortcode
+ *
+ * @property SCRPTZ_TDL_Shortcodes shortcode
  * @property Template_Loader template_load
  * @since  1.0.0
-     */
+ */
     class SCRPTZ_TDL_Functionality
     {
         /**
@@ -248,7 +248,7 @@
         }
         
         /**
-         * enqueue admin js from plugin
+         * enqueue admin js for plugin
          *
          * @since  1.0.4
          * @return void
@@ -288,7 +288,7 @@
         }
     
         /**
-         * enqueue public js from plugin
+         * enqueue public js for plugin
          *
          * @since  1.0.4
          * @return void

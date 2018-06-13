@@ -68,7 +68,7 @@
 	     */
 	    protected function _shortcode()
         {
-            $shortoce_settings_taxonomy = [
+            $shortcode_settings_taxonomy = [
                 'taxonomy' => $this->att('select_taxonomy'),
                 'term_description' => (bool)$this->att('term_description'),
                 'post_data' => $this->att('post_data'),
@@ -76,15 +76,15 @@
             ];
             
             $args['terms'] = get_terms(array(
-                'taxonomy' => $shortoce_settings_taxonomy['taxonomy'],
+                'taxonomy' => $shortcode_settings_taxonomy['taxonomy'],
                 'hide_empty' => true,
                 'parent'   => 0,
             ));
             
-            $args['taxonomy'] = $shortoce_settings_taxonomy['taxonomy'];
-            $args['show_description'] = $shortoce_settings_taxonomy['term_description'];
-            $args['post_data'] = $shortoce_settings_taxonomy['post_data'];
-            $args['post_meta_fields'] = $shortoce_settings_taxonomy['post_meta_fields'];
+            $args['taxonomy'] = $shortcode_settings_taxonomy['taxonomy'];
+            $args['show_description'] = $shortcode_settings_taxonomy['term_description'];
+            $args['post_data'] = $shortcode_settings_taxonomy['post_data'];
+            $args['post_meta_fields'] = $shortcode_settings_taxonomy['post_meta_fields'];
             
             return Template_View_Loader::get_template('template-top-level', $args);
         }

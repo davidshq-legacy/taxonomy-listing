@@ -7,15 +7,15 @@
      * Version:     1.0.3
      * Author:      Suraj Gupta, Dave Mackey
      * License:     GPLv2
-     * Text Domain: scrptz-tdl
+     * Text Domain: pctdl
      * Domain Path: /languages
      *
      * @package Taxonomy Directory Listing
      * @version 1.0.0
      */
     
-    //define SCRPTZ_TDL_ENV, set to development to enable logging
-    define('SCRPTZ_TDL_ENV', 'production');
+    //define PCTDL_ENV, set to development to enable logging
+    define('PCTDL_ENV', 'production');
     
     // Use composer autoload.
     require __DIR__ . '/vendor/autoload.php';
@@ -23,11 +23,11 @@
 /**
  * Main initiation class
  *
- * @property SCRPTZ_TDL_Shortcodes shortcode
+ * @property PCTDL_Shortcodes shortcode
  * @property Template_Loader template_load
  * @since  1.0.0
  */
-    class SCRPTZ_TDL_Functionality
+    class PCTDL_Functionality
     {
         /**
          * Current version
@@ -48,7 +48,7 @@
         /**
          * Singleton instance of plugin
          *
-         * @var SCRPTZ_TDL_Functionality
+         * @var PCTDL_Functionality
          * @since  1.0.0
          */
         protected static $single_instance = null;
@@ -85,7 +85,7 @@
          * Creates or returns an instance of this class.
          *
          * @since  1.0.0
-         * @return SCRPTZ_TDL_Functionality A single instance of this class.
+         * @return PCTDL_Functionality A single instance of this class.
          */
         public static function get_instance()
         {
@@ -171,7 +171,7 @@
         public function init()
         {
             if ($this->check_requirements()) {
-                load_plugin_textdomain('scrptz-tdl', false,
+                load_plugin_textdomain('pctdl', false,
                     dirname($this->basename) . '/languages/');
                 
                 $this->plugin_classes();
@@ -230,7 +230,7 @@
         {
             $this->add_dev_classes();
             
-            $this->shortcode = new SCRPTZ_TDL_Shortcodes($this);
+            $this->shortcode = new PCTDL_Shortcodes($this);
             $this->template_load = new Template_Loader($this);
         }
 
@@ -239,7 +239,7 @@
 	     */
 	    public function add_dev_classes()
         {
-            if (defined('SCRPTZ_TDL_ENV') && SCRPTZ_TDL_ENV == 'development') {
+            if (defined('PCTDL_ENV') && PCTDL_ENV == 'development') {
                 if (file_exists(__DIR__ . '/dev/WP_Logging.php')) {
                     include __DIR__ . '/dev/WP_Logging.php';
                 }
@@ -258,31 +258,31 @@
             $min = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
     
             wp_enqueue_style(
-                'scrptz-tdl-admin-select2',
-                SCRPTZ_TDL_Functionality::url("bower_components/select2/dist/css/select2{$min}.css"),
+                'pctdl-admin-select2',
+                PCTDL_Functionality::url("bower_components/select2/dist/css/select2{$min}.css"),
                 array(),
-                SCRPTZ_TDL_Functionality::VERSION
+                PCTDL_Functionality::VERSION
             );
     
             wp_enqueue_style(
-                'scrptz-tdl-admin-main',
-                SCRPTZ_TDL_Functionality::url("templates/admin/css/main{$min}.css"),
+                'pctdl-admin-main',
+                PCTDL_Functionality::url("templates/admin/css/main{$min}.css"),
                 array(),
-                SCRPTZ_TDL_Functionality::VERSION
+                PCTDL_Functionality::VERSION
             );
     
             wp_enqueue_script(
-                'scrptz-tdl-admin-select2-js',
-                SCRPTZ_TDL_Functionality::url("bower_components/select2/dist/js/select2{$min}.js"),
+                'pctdl-admin-select2-js',
+                PCTDL_Functionality::url("bower_components/select2/dist/js/select2{$min}.js"),
                 array('jquery'),
-                SCRPTZ_TDL_Functionality::VERSION
+                PCTDL_Functionality::VERSION
             );
     
             wp_enqueue_script(
-                'scrptz-tdl-admin-main-js',
-                SCRPTZ_TDL_Functionality::url("templates/admin/js/main{$min}.js"),
+                'pctdl-admin-main-js',
+                PCTDL_Functionality::url("templates/admin/js/main{$min}.js"),
                 array('jquery'),
-                SCRPTZ_TDL_Functionality::VERSION
+                PCTDL_Functionality::VERSION
             );
     
         }
@@ -298,17 +298,17 @@
             $min = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
     
             wp_enqueue_style(
-                'scrptz-tdl-main',
-                SCRPTZ_TDL_Functionality::url("templates/css/main{$min}.css"),
+                'pctdl-main',
+                PCTDL_Functionality::url("templates/css/main{$min}.css"),
                 array(),
-                SCRPTZ_TDL_Functionality::VERSION
+                PCTDL_Functionality::VERSION
             );
     
             wp_enqueue_script(
-                'scrptz-tdl-main-js',
-                SCRPTZ_TDL_Functionality::url("templates/js/main{$min}.js"),
+                'pctdl-main-js',
+                PCTDL_Functionality::url("templates/js/main{$min}.js"),
                 array('jquery'),
-                SCRPTZ_TDL_Functionality::VERSION
+                PCTDL_Functionality::VERSION
             );
         }
         
@@ -352,7 +352,7 @@
                  sprintf(__('Taxonomy Directory Listing has been <a href="%s">deactivated</a>. ' .
                             'It requires CMB2 and WDS_Shortcode plugins, ' .
                             'please make sure that these plugins are installed.',
-                     'scrptz-tdl'), admin_url('plugins.php')) . '</p>';
+                     'pctdl'), admin_url('plugins.php')) . '</p>';
             echo '</div>';
         }
         
@@ -384,25 +384,25 @@
          */
         public function template_path()
         {
-            return apply_filters('scrptz_template_path', 'scrptz-tdl/');
+            return apply_filters('pctdl_template_path', 'pctdl/');
         }
     }
     
     
     /**
-     * Grab the SCRPTZ_TDL_Functionality object and return it.
-     * Wrapper for SCRPTZ_TDL_Functionality::get_instance()
+     * Grab the PCTDL_Functionality object and return it.
+     * Wrapper for PCTDL_Functionality::get_instance()
      *
      * @since  1.0.0
-     * @return SCRPTZ_TDL_Functionality  Singleton instance of plugin class.
+     * @return PCTDL_Functionality  Singleton instance of plugin class.
      */
-    function scrptz_tdl_func()
+    function pctdl_func()
     {
-        return SCRPTZ_TDL_Functionality::get_instance();
+        return PCTDL_Functionality::get_instance();
     }
     
     // Kick it off.
-    add_action('plugins_loaded', array(scrptz_tdl_func(), 'hooks'));
+    add_action('plugins_loaded', array(pctdl_func(), 'hooks'));
     
-    register_activation_hook(__FILE__, array(scrptz_tdl_func(), '_activate'));
-    register_deactivation_hook(__FILE__, array(scrptz_tdl_func(), '_deactivate'));
+    register_activation_hook(__FILE__, array(pctdl_func(), '_activate'));
+    register_deactivation_hook(__FILE__, array(pctdl_func(), '_deactivate'));

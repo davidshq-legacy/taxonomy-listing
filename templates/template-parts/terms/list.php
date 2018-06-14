@@ -6,7 +6,7 @@
             <ul>
                 <?php
                 try {
-	                SCRPTZ_TDL_Core::get_term_children_list( $term_children );
+	                PCTDL_Core::get_term_children_list( $term_children );
                 } catch ( Exception $e ) {
                 }
                 ?>

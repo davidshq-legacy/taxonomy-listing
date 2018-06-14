@@ -6,7 +6,7 @@
             <ul>
                 <?php
                 try {
-	                SCRPTZ_TDL_Core::get_term_posts_list( $term_posts );
+	                PCTDL_Core::get_term_posts_list( $term_posts );
                 } catch ( Exception $e ) {
                 }
                 ?>

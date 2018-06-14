@@ -11,17 +11,17 @@
      *
      * @since 1.0.0
      */
-    class SCRPTZ_TDL_Shortcodes_Resources_Admin extends WDS_Shortcode_Admin
+    class PCTDL_Shortcodes_Resources_Admin extends WDS_Shortcode_Admin
     {
         /**
          * Shortcode Run object
          *
-         * @var   SCRPTZ_TDL_Shortcodes_Resources_Run
+         * @var   PCTDL_Shortcodes_Resources_Run
          * @since 1.0.0
          */
         protected $run;
         
-        private $prefix = "scrptz_tdl_";
+        private $prefix = "pctdl_";
         
         private $exclude_taxonomy
             = array(
@@ -30,20 +30,20 @@
                 "post_format"
             );
 
-        /**
-         * Constructor
-         *
-         * @since  1.0.0
-         * @param  object $run SCRPTZ_TDL_Shortcodes_Resources_Run object.
-         * @return void
-         */
-        public function __construct(SCRPTZ_TDL_Shortcodes_Resources_Run $run)
+	    /**
+	     * Constructor
+	     *
+	     * @since  1.0.0
+	     *
+	     * @param PCTDL_Shortcodes_Resources_Run $run PCTDL_Shortcodes_Resources_Run object.
+	     */
+        public function __construct(PCTDL_Shortcodes_Resources_Run $run)
         {
             $this->run = $run;
             
             parent::__construct(
                 $this->run->shortcode,
-                SCRPTZ_TDL_Functionality::VERSION,
+                PCTDL_Functionality::VERSION,
                 $this->run->atts_defaults
             );
             
@@ -67,8 +67,8 @@
         function js_button_data()
         {
             return array(
-                'qt_button_text' => __('Taxonomy Directory Listing', 'scrptz-tdl'),
-                'button_tooltip' => __('Insert Taxonomy Directory Listing', 'scrptz-tdl'),
+                'qt_button_text' => __('Taxonomy Directory Listing', 'pctdl'),
+                'button_tooltip' => __('Insert Taxonomy Directory Listing', 'pctdl'),
                 'icon'           => 'dashicons-media-interactive',
                 'mceView'        => true, // The future
             );
@@ -85,8 +85,8 @@
         function fields($fields, $button_data)
         {
             $fields[] = array(
-                'name'             => __('Taxonomy', 'scrptz-tdl'),
-                'desc'             => __('Select Taxonomy', 'scrptz-tdl'),
+                'name'             => __('Taxonomy', 'pctdl'),
+                'desc'             => __('Select Taxonomy', 'pctdl'),
                 'id'               => 'select_taxonomy',
                 'type'             => 'select',
                 'show_option_none' => false,
@@ -96,24 +96,24 @@
             );
             
             $fields[] = array(
-                'name'    => __('Term Description', 'scrptz-tdl'),
-                'desc'    => __('Show term description', 'scrptz-tdl'),
+                'name'    => __('Term Description', 'pctdl'),
+                'desc'    => __('Show term description', 'pctdl'),
                 'id'      => 'term_description',
                 'type'    => 'checkbox',
                 'default' => false
             );
             
             $fields[] = array(
-                'name'             => esc_html__('Extra Post Data', 'scrptz-tdl'),
+                'name'             => esc_html__('Extra Post Data', 'pctdl'),
                 'desc'             => esc_html__('Show extra post data below the item listing',
-                    'scrptz-tdl'),
+                    'pctdl'),
                 'id'               => 'post_data',
                 'type'             => 'select_multiple',
                 'show_option_none' => true,
                 'options'          => array(
-                    'post_excerpt' => esc_html__('Excerpt', 'scrptz-tdl'),
-                    'post_author'  => esc_html__('Author', 'scrptz-tdl'),
-                    'post_date'    => esc_html__('Post Date', 'scrptz-tdl'),
+                    'post_excerpt' => esc_html__('Excerpt', 'pctdl'),
+                    'post_author'  => esc_html__('Author', 'pctdl'),
+                    'post_date'    => esc_html__('Post Date', 'pctdl'),
                 ),
             );
     
@@ -123,9 +123,9 @@
             }
             
             $fields[] = array(
-                'name'             => esc_html__('Post Meta Fields', 'scrptz-tdl'),
+                'name'             => esc_html__('Post Meta Fields', 'pctdl'),
                 'desc'             => esc_html__('Show post meta fields values below the item listing',
-                    'scrptz-tdl'),
+                    'pctdl'),
                 'id'               => 'post_meta_fields',
                 'type'             => 'select_multiple',
                 'show_option_none' => true,
@@ -195,7 +195,7 @@
             $object_type,
             $field_type_object
         ) {
-            $select_multiple = '<select class="widefat scrptz-tdl-select2" multiple="multiple" name="' . $field->args['_name'] .
+            $select_multiple = '<select class="widefat pctdl-select2" multiple="multiple" name="' . $field->args['_name'] .
                                '[]" id="' . $field->args['_id'] . '"';
             foreach ($field->args['attributes'] as $attribute => $value) {
                 $select_multiple .= " $attribute=\"$value\"";
@@ -252,7 +252,7 @@
                         AND $wpdb->postmeta.meta_key NOT RegExp '(^[0-9]+$)'
                     ";
             $meta_keys = $wpdb->get_col($query);
-            set_transient('scrptz_tdl_all_meta_keys', $meta_keys, 60 * 60 * 24); # create 1 Day Expiration
+            set_transient('pctdl_all_meta_keys', $meta_keys, 60 * 60 * 24); # create 1 Day Expiration
             
             return $meta_keys;
         }
@@ -264,7 +264,7 @@
 	     * @since 1.0.0
 	     */
 	    function get_all_meta_keys(){
-            $cache = get_transient('scrptz_tdl_all_meta_keys');
+            $cache = get_transient('pctdl_all_meta_keys');
             $meta_keys = $cache ? $cache : $this->generate_all_meta_keys();
             return $meta_keys;
         }

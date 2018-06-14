@@ -207,22 +207,24 @@
             ));
             
         }
-        
-        /**
-         * Retrieve all connected logs
-         *
-         * Used for retrieving logs related to particular items, such as a specific purchase.
-         *
-         * @access   private
-         * @since    1.0
-         *
-         * @uses     wp_parse_args()
-         * @uses     get_posts()
-         * @uses     get_query_var()
-         * @uses     self::valid_type()
-         *
-         * @return  array / false
-         */
+
+	    /**
+	     * Retrieve all connected logs
+	     *
+	     * Used for retrieving logs related to particular items, such as a specific purchase.
+	     *
+	     * @access   private
+	     * @since    1.0
+	     *
+	     * @uses     wp_parse_args()
+	     * @uses     get_posts()
+	     * @uses     get_query_var()
+	     * @uses     self::valid_type()
+	     *
+	     * @param array $args
+	     *
+	     * @return array|bool
+	     */
         
         public static function get_connected_logs($args = array())
         {
@@ -260,18 +262,22 @@
             return false;
             
         }
-        
-        /**
-         * Retrieves number of log entries connected to particular object ID
-         *
-         * @access   private
-         * @since    1.0
-         *
-         * @uses     WP_Query()
-         * @uses     self::valid_type()
-         *
-         * @return  int
-         */
+
+	    /**
+	     * Retrieves number of log entries connected to particular object ID
+	     *
+	     * @access   private
+	     * @since    1.0
+	     *
+	     * @uses     WP_Query()
+	     * @uses     self::valid_type()
+	     *
+	     * @param int $object_id
+	     * @param null $type
+	     * @param null $meta_query
+	     *
+	     * @return  int
+	     */
         
         public static function get_log_count($object_id = 0, $type = null, $meta_query = null)
         {
@@ -305,7 +311,7 @@
             
         }
         
-/**
+		/**
          * Allows you to tie in a cron job and prune old logs.
          *
          * @since  1.1

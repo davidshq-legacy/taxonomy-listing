@@ -11,7 +11,7 @@
      *
      * @since 1.0.0
      */
-    class SCRPTZ_TDL_Shortcodes_Resources_Run extends WDS_Shortcodes
+    class PCTDL_Shortcodes_Resources_Run extends WDS_Shortcodes
     {
         
         /**
@@ -20,7 +20,7 @@
          * @var string
          * @since 1.0.0
          */
-        public $shortcode = 'scrptz_tdl';
+        public $shortcode = 'pctdl';
         
         /**
          * Default attributes applied to the shortcode.
@@ -36,7 +36,7 @@
         );
         
         protected $plugin = null;
-        private   $prefix = "scrptz_tdl_";
+        private   $prefix = "pctdl_";
         
         public function __construct($plugin)
         {

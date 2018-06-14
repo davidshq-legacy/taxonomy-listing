@@ -12,11 +12,11 @@ class ComposerStaticInit11a34f05c4d7e2608496dcf6679ab519
     );
 
     public static $classMap = array (
-        'SCRPTZ_TDL_Core' => __DIR__ . '/../..' . '/includes/classes/class-core.php',
-        'SCRPTZ_TDL_Shortcodes' => __DIR__ . '/../..' . '/includes/shortcode/class-shortcodes.php',
-        'SCRPTZ_TDL_Shortcodes_Resources' => __DIR__ . '/../..' . '/includes/shortcode/class-shortcodes-resources.php',
-        'SCRPTZ_TDL_Shortcodes_Resources_Admin' => __DIR__ . '/../..' . '/includes/shortcode/class-shortcodes-resources-admin.php',
-        'SCRPTZ_TDL_Shortcodes_Resources_Run' => __DIR__ . '/../..' . '/includes/shortcode/class-shortcodes-resources-run.php',
+        'PCTDL_Core' => __DIR__ . '/../..' . '/includes/classes/class-core.php',
+        'PCTDL_Shortcodes' => __DIR__ . '/../..' . '/includes/shortcode/class-shortcodes.php',
+        'PCTDL_Shortcodes_Resources' => __DIR__ . '/../..' . '/includes/shortcode/class-shortcodes-resources.php',
+        'PCTDL_Shortcodes_Resources_Admin' => __DIR__ . '/../..' . '/includes/shortcode/class-shortcodes-resources-admin.php',
+        'PCTDL_Shortcodes_Resources_Run' => __DIR__ . '/../..' . '/includes/shortcode/class-shortcodes-resources-run.php',
         'Template_Loader' => __DIR__ . '/../..' . '/includes/templates/class-template-loader.php',
         'Template_View_Loader' => __DIR__ . '/../..' . '/includes/templates/class-template-view-loader.php',
     );

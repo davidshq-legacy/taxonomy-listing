@@ -6,11 +6,11 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'SCRPTZ_TDL_Core' => $baseDir . '/includes/classes/class-core.php',
-    'SCRPTZ_TDL_Shortcodes' => $baseDir . '/includes/shortcode/class-shortcodes.php',
-    'SCRPTZ_TDL_Shortcodes_Resources' => $baseDir . '/includes/shortcode/class-shortcodes-resources.php',
-    'SCRPTZ_TDL_Shortcodes_Resources_Admin' => $baseDir . '/includes/shortcode/class-shortcodes-resources-admin.php',
-    'SCRPTZ_TDL_Shortcodes_Resources_Run' => $baseDir . '/includes/shortcode/class-shortcodes-resources-run.php',
+    'PCTDL_Core' => $baseDir . '/includes/classes/class-core.php',
+    'PCTDL_Shortcodes' => $baseDir . '/includes/shortcode/class-shortcodes.php',
+    'PCTDL_Shortcodes_Resources' => $baseDir . '/includes/shortcode/class-shortcodes-resources.php',
+    'PCTDL_Shortcodes_Resources_Admin' => $baseDir . '/includes/shortcode/class-shortcodes-resources-admin.php',
+    'PCTDL_Shortcodes_Resources_Run' => $baseDir . '/includes/shortcode/class-shortcodes-resources-run.php',
     'Template_Loader' => $baseDir . '/includes/templates/class-template-loader.php',
     'Template_View_Loader' => $baseDir . '/includes/templates/class-template-view-loader.php',
 );

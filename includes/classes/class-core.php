@@ -11,7 +11,7 @@
      *
      * @since 1.0.0
      */
-    class SCRPTZ_TDL_Core
+    class PCTDL_Core
     {
 	    /**
 	     * Get Taxonomy Term Children

@@ -262,12 +262,12 @@
         protected function _locate($template)
         {
             $locations = apply_filters("template_locations_for_{$this->template}", array(
-                STYLESHEETPATH . '/scrptz-tdl/css/',
-                STYLESHEETPATH . '/scrptz-tdl/js/',
-                TEMPLATEPATH . '/scrptz-tdl/',
-                SCRPTZ_TDL_Functionality::$path . 'templates/',
-                SCRPTZ_TDL_Functionality::$path . 'templates/css/',
-                SCRPTZ_TDL_Functionality::$path . 'templates/js/'
+                STYLESHEETPATH . '/pctdl/css/',
+                STYLESHEETPATH . '/pctdl/js/',
+                TEMPLATEPATH . '/pctdl/',
+	            PCTDL_Functionality::$path . 'templates/',
+	            PCTDL_Functionality::$path . 'templates/css/',
+	            PCTDL_Functionality::$path . 'templates/js/'
             ), $this);
             
             $located = '';

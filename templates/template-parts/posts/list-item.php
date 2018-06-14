@@ -15,9 +15,9 @@
             <?php
             
             if ($item == 'post_excerpt') {
-                $excerpt = scprtz_tdl_get_excerpt_by_id($post->ID);
+                $excerpt = pctdl_get_excerpt_by_id($post->ID);
                 if (!empty($excerpt)) {
-                    echo ' - ' . scprtz_tdl_get_excerpt_by_id($post->ID);
+                    echo ' - ' . pctdl_get_excerpt_by_id($post->ID);
                 }
             }
             

@@ -4,7 +4,6 @@
      *
      * This is the most generic template file for Taxonomy Listing.
      * It is used to display a page when nothing more specific matches a query.
-     * E.g., it puts together the home page when no home.php file exists.
      *
      * @link       https://codex.wordpress.org/Template_Hierarchy
      *
@@ -29,7 +28,7 @@
                 <div class="child-terms">
                     <?php
                     try {
-	                    SCRPTZ_TDL_Core::get_term_children();
+	                    PCTDL_Core::get_term_children();
                     } catch ( Exception $e ) {
                     }
                     ?>
@@ -38,7 +37,7 @@
                 <div class="child-posts">
                     <?php
                     try {
-	                    SCRPTZ_TDL_Core::get_term_posts();
+	                    PCTDL_Core::get_term_posts();
                     } catch ( Exception $e ) {
                     }
                     ?>

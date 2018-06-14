@@ -11,13 +11,13 @@
      *
      * @since 1.0.0
      */
-    class SCRPTZ_TDL_Shortcodes
+    class PCTDL_Shortcodes
     {
         
         /**
-         * Instance of SCRPTZ_TDL_Shortcodes
+         * Instance of PCTDL_Shortcodes
          *
-         * @var SCRPTZ_TDL_Shortcodes
+         * @var PCTDL_Shortcodes
          */
         protected $resources;
         
@@ -30,7 +30,7 @@
          */
         public function __construct($plugin)
         {
-            $this->resources = new SCRPTZ_TDL_Shortcodes_Resources($plugin);
+            $this->resources = new PCTDL_Shortcodes_Resources($plugin);
         }
         
         /**

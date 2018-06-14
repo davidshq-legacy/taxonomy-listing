@@ -54,7 +54,7 @@
          * Handles template usage so that we can use our own templates instead of the themes.
          *
          * Templates are in the 'templates' folder. plugin looks for theme
-         * overrides in /theme/scrptz-tdl/ by default
+         * overrides in /theme/pctdl/ by default
          *
          * @param mixed $template
          * @return string
@@ -76,8 +76,8 @@
                 $file = $this->template = "{$page_template}";
                 
                 $find[] = "templates/$file";
-                $find[] = scrptz_tdl_func()->template_path() . $base_template;
-                $find[] = scrptz_tdl_func()->template_path() . $file;
+                $find[] = pctdl_func()->template_path() . $base_template;
+                $find[] = pctdl_func()->template_path() . $file;
                 
             }
             
@@ -85,9 +85,9 @@
 
                 $template = locate_template(array_unique($find));
                 if (!$template) {
-                    $template = SCRPTZ_TDL_Functionality::$path . 'templates/' . $file;
+                    $template = PCTDL_Functionality::$path . 'templates/' . $file;
                     if(!file_exists($template)) {
-                        $template = SCRPTZ_TDL_Functionality::$path . 'templates/' . $base_template;
+                        $template = PCTDL_Functionality::$path . 'templates/' . $base_template;
                     }
                 }
             }

@@ -1,4 +1,4 @@
-<style type="text/css" src="<?php echo scrptz_tdl_func()->url() . "templates/css/main.css" ?>"></style>
+<style type="text/css" src="<?php echo pctdl_func()->url() . "templates/css/main.css" ?>"></style>
 
 <?php
     
@@ -12,7 +12,7 @@
         echo "<ul>";
         
         $error_string = $terms->get_error_message();
-        echo "<li class='scrptz-top-terms'>" .
+        echo "<li class='pctdl-top-terms'>" .
              "(" . $this->get('taxonomy') . ") $error_string" .
              "</li>";
         
@@ -42,7 +42,7 @@
                 $term_link .= '?' . $query_str;
             }
             
-            echo "<li class='scrptz-top-terms'>" .
+            echo "<li class='pctdl-top-terms'>" .
                  "<a href='" . $term_link . "'>$term->name</a>" .
                  "</li>";
             

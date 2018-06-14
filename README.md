@@ -2,6 +2,7 @@
 This plugin was the brainchild of Dave Mackey for the site philcata.com with the code actually being written by Suraj Gupta. Since then Dave Mackey continues to refine the code further.
 
 # Changelog
+- 1.3.1 - Fixed one remaining use of scrptz_tdl_select2
 - 1.3.0 - Refactored code from scrptz_tdl to pctdl, etc. throughout.
 - 1.2.1
     - Removed unneeded code.
